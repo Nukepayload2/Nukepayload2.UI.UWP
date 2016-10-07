@@ -1,0 +1,58 @@
+﻿<local:ClassicDialog
+    x:Class="Nukepayload2.UI.UWP.ColorPickerDialog"
+    xmlns:uiext="using:Nukepayload2.UI.UWP"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.UI.UWP" Background="White"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid MinHeight="320" MinWidth="420" RequestedTheme="Light">
+        <Grid.Resources>
+            <Style TargetType="TextBlock" >
+                <Setter Property="IsHitTestVisible" Value="False" />
+            </Style>
+        </Grid.Resources>
+        <Border Background="White" CornerRadius="30" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="97*"/>
+                    <RowDefinition Height="21*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="308*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid Height="32" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                    <Rectangle Fill="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="RectDrag"/>
+                    <TextBlock x:Uid="TblCustomPen" VerticalAlignment="Top" x:Name="TblTitle" Foreground="{ThemeResource SystemControlBackgroundAltHighBrush}" IsHitTestVisible="False"  Margin="0,4" HorizontalAlignment="Center" Text="自定义画笔" FontSize="16" />
+                    <Button VerticalAlignment="Top" Click="btnCancel_Click" HorizontalAlignment="Right" Width="32" Height="28" Background="DarkRed" Foreground="White">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="12" Glyph="&#xE947;" />
+                    </Button>
+                </Grid>
+                <uiext:ColorDarknessPickerControl x:Name="RecPrev" InputColor="{Binding ElementName=ColorPicker,Path=PickedColor}" HorizontalAlignment="Stretch" Height="59" Margin="4,36,4,0"  VerticalAlignment="Top" />
+                <StackPanel Margin="9,32,4,0" VerticalAlignment="Top" Grid.Column="1" >
+                    <TextBlock>R</TextBlock>
+                    <TextBox x:Name="txtRed" TextWrapping="Wrap" Text="{Binding ElementName=RecPrev,Path=PickedColor.R}" />
+                    <TextBlock>G</TextBlock>
+                    <TextBox x:Name="txtGreen" TextWrapping="Wrap" Text="{Binding ElementName=RecPrev,Path=PickedColor.G}" />
+                    <TextBlock>B</TextBlock>
+                    <TextBox x:Name="txtBlue" TextWrapping="Wrap" Text="{Binding ElementName=RecPrev,Path=PickedColor.B}" />
+                    <TextBlock>A</TextBlock>
+                    <TextBox x:Name="txtTrans" TextWrapping="Wrap" Text="{Binding ElementName=RecPrev,Path=PickedColor.A}" />
+                    <TextBlock x:Uid="TblStrokeThickness">粗细(仅用于笔)</TextBlock>
+                    <TextBox x:Name="txtWid" TextWrapping="Wrap" Text="1"/>
+                </StackPanel>
+                <uiext:ColorPickerControl x:Name="ColorPicker" Margin="4,100,4,24"/>
+                <Border Margin="4,5,4,4" Background="White" BorderBrush="Black" BorderThickness="1" Grid.Row="1">
+                    <InkCanvas x:Name="InkPrev" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Border>
+                <TextBlock x:Uid="TblPlayground" IsHitTestVisible="True" Margin="10,0,32,1" Text="试一试(点这里清空)" Height="20" VerticalAlignment="Bottom" Tapped="TblClear_Tapped"/>
+                <Button x:Name="btnClose" Margin="4" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Padding="24,6">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE001;" />
+                </Button>
+
+            </Grid>
+        </Border>
+    </Grid>
+</local:ClassicDialog>

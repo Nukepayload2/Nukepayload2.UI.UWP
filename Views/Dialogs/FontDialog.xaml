@@ -1,0 +1,89 @@
+﻿<local:ClassicDialog
+    x:Class="Nukepayload2.UI.UWP.FontDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.UI.UWP" Margin="0,20,0,0"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <local:ClassicDialog.Resources>
+        <local:FontStyleBackToStringConverter x:Key="FontStyleBackToStringConverter"/>
+        <local:FontStretchBackToStringConverter x:Key="FontStretchBackToStringConverter"/>
+        <local:FontWeightNameConverter x:Key="FontWeightNameConverter"/>
+        <local:EnumValuesConverter x:Key="EnumValuesConverter"/>
+    </local:ClassicDialog.Resources>
+    <local:ClassicDialog.DataContext>
+        <local:FontsViewModel/>
+    </local:ClassicDialog.DataContext>
+    <Grid MinHeight="310" MinWidth="360">
+        <Grid.Resources>
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Rectangle Fill="{ThemeResource SystemControlBackgroundAccentBrush}" PointerPressed="Rectangle_PointerPressed"/>
+            <TextBlock VerticalAlignment="Top" x:Uid="TblFont" Foreground="{ThemeResource SystemControlBackgroundAltHighBrush}" IsHitTestVisible="False"  Margin="0,4" HorizontalAlignment="Center" Text="Fonts Dialog" FontSize="16" />
+            <Button VerticalAlignment="Top" x:Name="BtnClose" Click="BtnClose_Click" HorizontalAlignment="Right" Width="32" Height="28" Background="DarkRed" Foreground="White">
+                <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="12" Glyph="&#xE947;" />
+            </Button>
+        </Grid>
+        <Grid Margin="4" Grid.Row="1">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="LstFontFamily" HorizontalAlignment="Stretch" ItemsSource="{Binding FontFamilies}" SelectedValue="{Binding FontInformation.FontFamily,Mode=TwoWay}"/>
+                    <ComboBox x:Name="LstFontSize" Grid.Column="1" HorizontalAlignment="Stretch" ItemsSource="{Binding FontSizes}" SelectedValue="{Binding FontInformation.FontSize,Mode=TwoWay}"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton Margin="2" Width="32" Height="32" IsChecked="{Binding FontInformation.IsBold, Mode=TwoWay}">B</ToggleButton>
+                        <ToggleButton Margin="2" Width="32" Height="32" IsChecked="{Binding FontInformation.IsItalic, Mode=TwoWay}">/</ToggleButton>
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Right" Margin="2" DataContext="{Binding FontInformation, Mode=OneWay}" FontFamily="{Binding FontFamily}" FontSize="{Binding FontSize}" FontStretch="{Binding FontStretch}" FontStyle="{Binding FontStyle}" FontWeight="{Binding FontWeight}" IsColorFontEnabled="{Binding IsColorFontEnabled}" Grid.Column="1">N2UI字体Agb</TextBlock>
+                </Grid>
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock>IsColorFontEnabled</TextBlock>
+                    <CheckBox Margin="2" x:Name="ChkColorFont" Grid.Column="1" IsChecked="{Binding FontInformation.IsColorFontEnabled, Mode=TwoWay}"></CheckBox>
+                    <TextBlock Grid.Row="1">FontStretch</TextBlock>
+                    <ComboBox x:Name="LstFontStretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" 
+                              ItemsSource="{Binding FontInformation.FontStretch, Converter={StaticResource EnumValuesConverter}}" 
+                              SelectedValue="{Binding FontInformation.FontStretch, Converter={StaticResource FontStretchBackToStringConverter}, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="2">FontStyle</TextBlock>
+                    <ComboBox x:Name="LstFontStyle" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" 
+                              ItemsSource="{Binding FontInformation.FontStyle, Converter={StaticResource EnumValuesConverter}}"
+                              SelectedValue="{Binding FontInformation.FontStyle, Converter={StaticResource FontStyleBackToStringConverter}, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="3">FontWeight</TextBlock>
+                    <ComboBox x:Name="LstFontWeight" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="3"
+                              SelectedValue="{Binding FontInformation.FontWeight, Converter={StaticResource FontWeightNameConverter}, Mode=TwoWay}"
+                              ItemsSource="{Binding FontWeights}"/>
+                </Grid>
+                <Button Padding="32,8" HorizontalAlignment="Right" Content="确定" Margin="4,8,4,4" Click="BtnOk_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</local:ClassicDialog>
