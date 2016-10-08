@@ -43,18 +43,16 @@ Public Class FontInformation
         End Set
     End Property
 
-    Dim _FontStyle As New FontStyle?(Windows.UI.Text.FontStyle.Normal)
-    Public Property FontStyle As FontStyle?
+    Dim _FontStyle As FontStyle
+    Public Property FontStyle As FontStyle
         Get
             Return _FontStyle
         End Get
         Set
-            If Value.HasValue Then
-                If _FontStyle <> Value Then
-                    _FontStyle = Value
-                    RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(FontStyle)))
-                    RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IsItalic)))
-                End If
+            If _FontStyle <> Value Then
+                _FontStyle = Value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(FontStyle)))
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IsItalic)))
             End If
         End Set
     End Property
@@ -90,7 +88,7 @@ Public Class FontInformation
             Return FontStyle = Windows.UI.Text.FontStyle.Italic
         End Get
         Set(value As Boolean)
-            FontStyle = If(value, Windows.UI.Text.FontStyle.Italic, Windows.UI.Text.FontStyle.Normal)
+            FontStyle = If(value, FontStyle.Italic, FontStyle.Normal)
         End Set
     End Property
 
