@@ -677,7 +677,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid BorderThickness="2,1,2,2" BorderBrush="{StaticResource LightDodgerBlueBrush}">
+                        <Grid BorderThickness="2,1,2,2" BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
@@ -686,7 +686,7 @@
                             <ContentPresenter Content="{TemplateBinding Header}"
                                               x:Name="HeaderContent"
                                               Padding="4"
-                                              Background="{StaticResource LightDodgerBlueBrush}"
+                                              Background="{TemplateBinding BorderBrush}"
                                               Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                                               />
                             <Button HorizontalAlignment="Right"

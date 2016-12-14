@@ -17,7 +17,7 @@ Public NotInheritable Class ErrorBlock
                            New PropertyMetadata(Nothing,
                                Sub(s, e)
                                    Dim this = DirectCast(s, ErrorBlock)
-                                   If String.IsNullOrEmpty(e.NewValue) Then
+                                   If Not String.IsNullOrEmpty(e.NewValue) Then
                                        this.Show(e.NewValue)
                                    Else
                                        this.Hide()
@@ -34,6 +34,6 @@ Public NotInheritable Class ErrorBlock
     End Sub
 
     Private Sub BtnOk_Click(sender As Object, e As RoutedEventArgs)
-        Hide()
+        ErrorMessage = String.Empty
     End Sub
 End Class
