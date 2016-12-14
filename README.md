@@ -7,6 +7,3 @@
 * 画笔对话框
 * Ribbon UI 菜单
 * 分组框
-
-## 不兼容 .NET Native
-这个库存在至少两个未知问题导致经过 .NET Native 编译后应用闪退

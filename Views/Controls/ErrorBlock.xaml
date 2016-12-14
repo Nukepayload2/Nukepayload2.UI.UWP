@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="Nukepayload2.UI.UWP.ErrorBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Visibility="Collapsed"
+    d:DesignHeight="100"
+    d:DesignWidth="400">
+    <Grid Background="Red" Grid.ColumnSpan="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TblErrorText" Margin="4" TextWrapping="Wrap" FontSize="16" Foreground="White"/>
+        <Button VerticalAlignment="Top" Grid.Column="1" Foreground="White" Click="BtnOk_Click">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Margin="2" Symbol="Clear"/>
+                <TextBlock Margin="4">确定</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

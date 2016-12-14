@@ -7,7 +7,6 @@ Public NotInheritable Class FontDialog
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs)
-        DataContext = Nothing
         Hide()
     End Sub
 
