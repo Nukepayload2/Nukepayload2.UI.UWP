@@ -36,4 +36,8 @@ Public NotInheritable Class ErrorBlock
     Private Sub BtnOk_Click(sender As Object, e As RoutedEventArgs)
         ErrorMessage = String.Empty
     End Sub
+
+    Private Sub ErrorBlock_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Hide()
+    End Sub
 End Class

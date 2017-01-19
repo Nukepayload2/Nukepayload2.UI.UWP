@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.UI.UWP", "Nukepayload2.UI.UWP.vbproj", "{FAEE72F7-B4E0-48E6-8270-193738FB3BC2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.UI.UWPGallery", "..\Nukepayload2.UI.UWPGallery\Nukepayload2.UI.UWPGallery.vbproj", "{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.UI.UWPTests", "Nukepayload2.UI.UWPTests\Nukepayload2.UI.UWPTests.vbproj", "{A4210224-9610-4565-97DC-06552B83E0D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,46 @@ Global
 		{FAEE72F7-B4E0-48E6-8270-193738FB3BC2}.Release|x64.Build.0 = Release|x64
 		{FAEE72F7-B4E0-48E6-8270-193738FB3BC2}.Release|x86.ActiveCfg = Release|x86
 		{FAEE72F7-B4E0-48E6-8270-193738FB3BC2}.Release|x86.Build.0 = Release|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|ARM.Build.0 = Debug|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x64.ActiveCfg = Debug|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x64.Build.0 = Debug|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x64.Deploy.0 = Debug|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x86.ActiveCfg = Debug|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x86.Build.0 = Debug|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Debug|x86.Deploy.0 = Debug|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|Any CPU.ActiveCfg = Release|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|ARM.ActiveCfg = Release|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|ARM.Build.0 = Release|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|ARM.Deploy.0 = Release|ARM
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x64.ActiveCfg = Release|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x64.Build.0 = Release|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x64.Deploy.0 = Release|x64
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x86.ActiveCfg = Release|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x86.Build.0 = Release|x86
+		{387ED6B7-E2CB-4E3B-965A-CD5F9194A50E}.Release|x86.Deploy.0 = Release|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|ARM.Build.0 = Debug|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|ARM.Deploy.0 = Debug|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x64.ActiveCfg = Debug|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x64.Build.0 = Debug|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x64.Deploy.0 = Debug|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x86.ActiveCfg = Debug|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x86.Build.0 = Debug|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Debug|x86.Deploy.0 = Debug|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|Any CPU.ActiveCfg = Release|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|ARM.ActiveCfg = Release|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|ARM.Build.0 = Release|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|ARM.Deploy.0 = Release|ARM
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x64.ActiveCfg = Release|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x64.Build.0 = Release|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x64.Deploy.0 = Release|x64
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x86.ActiveCfg = Release|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x86.Build.0 = Release|x86
+		{A4210224-9610-4565-97DC-06552B83E0D5}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

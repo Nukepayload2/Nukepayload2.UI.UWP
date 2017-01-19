@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Nukepayload2.UI.UWPTests.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.UI.UWPTests"
+    RequestedTheme="Light">
+
+</Application>

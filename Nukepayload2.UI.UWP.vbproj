@@ -129,9 +129,16 @@
     <Compile Include="Converters\EnumValuesConverter.vb" />
     <Compile Include="Converters\FontStyleBackToStringConverter.vb" />
     <Compile Include="Converters\FontWeightNameConverter.vb" />
+    <Compile Include="Linq\ElementsQuery.vb" />
+    <Compile Include="Linq\ISequenceExecution.vb" />
+    <Compile Include="Linq\SequenceExecution.vb" />
     <Compile Include="Models\FontInformation.vb" />
+    <Compile Include="Models\IPropertyItem.vb" />
     <Compile Include="Models\NamedProperty.vb" />
     <Compile Include="Utilities\FontDefaults.vb" />
+    <Compile Include="Utilities\ThumbnailGenerator.vb" />
+    <Compile Include="Utilities\StringValidator.vb" />
+    <Compile Include="Utilities\TypeValidations.vb" />
     <Compile Include="ViewModels\FontsViewModel.vb" />
     <Compile Include="Views\Composition\BackDrop.vb" />
     <Compile Include="Views\Composition\SurfaceLoader.vb" />
@@ -149,12 +156,25 @@
       <DependentUpon>ErrorBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\GroupBox.vb" />
+    <Compile Include="Views\Controls\Matrix3x2Editor.xaml.vb">
+      <DependentUpon>Matrix3x2Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Matrix4x4Editor.xaml.vb">
+      <DependentUpon>Matrix4x4Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\MenuGroupSeparator.vb" />
     <Compile Include="Views\Controls\MenuStrip.vb" />
     <Compile Include="Views\Controls\Hexagon.vb" />
     <Compile Include="Views\Controls\HexagonalButton.vb" />
     <Compile Include="Converters\NarrowingBorderThicknessConverter.vb" />
+    <Compile Include="Views\Controls\PropertyGrid.xaml.vb">
+      <DependentUpon>PropertyGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\ToolboxWindow.vb" />
+    <Compile Include="Views\Controls\TypeValidatorTextBlock.xaml.vb">
+      <DependentUpon>TypeValidatorTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ValueEditorTemplateSelector.vb" />
     <Compile Include="Views\Dialogs\ClassicDialog.vb" />
     <Compile Include="Views\Dialogs\FontDialog.xaml.vb">
       <DependentUpon>FontDialog.xaml</DependentUpon>
@@ -209,7 +229,27 @@
     <Import Include="Windows.UI.Xaml.Navigation" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\DynamicDataTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Controls\ErrorBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Matrix3x2Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Matrix4x4Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\PropertyGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\TypeValidatorTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -16,7 +16,7 @@
 
     Public Event CanExecuteChanged As EventHandler Implements ICommand.CanExecuteChanged
 
-    Public Sub Execute(parameter As Object) Implements ICommand.Execute
+    Public Sub ExecuteAsync(parameter As Object) Implements ICommand.Execute
         exec?.Invoke(parameter)
     End Sub
 

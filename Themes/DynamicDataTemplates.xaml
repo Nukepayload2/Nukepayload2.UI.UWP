@@ -1,0 +1,105 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.UI.UWP">
+
+    <!--用于编辑值的模板-->
+    <DataTemplate x:Key="IntegerEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="DecimalEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="DateTimeEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="DateTimeOffsetEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="StringEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="CharEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="Vector2EditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="Vector3EditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="Vector4EditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="ColorEditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="Matrix3x2EditorDataTemplate">
+
+    </DataTemplate>
+    <DataTemplate x:Key="Matrix4x4EditorDataTemplate">
+        <local:Matrix4x4Editor Value="{Binding Mode=TwoWay}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="TimeSpanEditorDataTemplate">
+        <TimePicker Time="{Binding Mode=TwoWay}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="BooleanEditorDataTemplate">
+        <CheckBox IsChecked="{Binding Mode=TwoWay}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="NullableValueEditorDataTemplate">
+        <!-- TODO: 需要用户控件-->
+        
+    </DataTemplate>
+
+    <!-- PropertySet 条目 -->
+    <DataTemplate x:Key="PropertySetItemDataTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}"/>
+            <ContentControl />
+        </Grid>
+    </DataTemplate>
+ 
+    <!-- PropertySet 编辑方式 -->
+    <DataTemplate x:Key="PropertySetListDataTemplate">
+        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PropertySemanticZoomDataTemplate">
+        <SemanticZoom>
+            <SemanticZoom.ZoomedInView>
+                <ListView Name="inView" ItemsSource="{Binding Path=View}" ItemTemplate="{StaticResource PropertySetItemDataTemplate}">
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <!--用于显示列表头的数据项的模板-->
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border Background="Blue">
+                                        <TextBlock Foreground="White" Text="{Binding GroupName}" FontSize="26"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <!--用于显示列表的数据项的模板-->
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <!-- 在这里放置GridView(或ListView)以表示缩小视图 -->
+                <ListView Name="outView" ItemsSource="{Binding Path=View.CollectionGroups}">
+                    <!--用于显示弹出的分组列表视图的数据项的模板-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="Blue">
+                                <TextBlock Foreground="White" Text="{Binding Group.GroupName}" FontSize="26"></TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+    </DataTemplate>
+</ResourceDictionary>

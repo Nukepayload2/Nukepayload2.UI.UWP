@@ -2,7 +2,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nukepayload2.UI.UWP">
+    
+    <!--转换器-->
     <local:NarrowingBorderThicknessConverter x:Key="NarrowThicknessConverter"/>
+    <local:ImageLoaderConverter x:Key="ImgLdrConverter"/>
+
+    <!--画刷-->
+    <SolidColorBrush x:Key="LightDodgerBlueBrush" Color="#AF0078D7"/>
+
+    <!--样式-->
     <Style TargetType="PivotHeaderItem" x:Key="PivotHeaderInvertForegroundStyle">
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontFamily" Value="{ThemeResource PivotHeaderItemFontFamily}" />
@@ -526,8 +534,6 @@
     </Style>
 
 
-    <local:ImageLoaderConverter x:Key="ImgLdrConverter"/>
-
     <Style TargetType="local:MenuStrip" >
         <Setter Property="Template">
             <Setter.Value>
@@ -712,7 +718,9 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="LightDodgerBlueBrush" Color="#AF0078D7"/>
-    
-    
+    <!--可选择的数据模板-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="DynamicDataTemplates.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
 </ResourceDictionary>

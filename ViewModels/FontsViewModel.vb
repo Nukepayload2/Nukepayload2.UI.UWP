@@ -1,4 +1,4 @@
-﻿Public Class FontsViewModel
+﻿Friend Class FontsViewModel
     Implements INotifyPropertyChanged
 
     Dim _FontInformation As New FontInformation
