@@ -17,9 +17,11 @@ Public NotInheritable Class Matrix4x4Editor
                            GetType(Matrix4x4), GetType(Matrix4x4Editor),
                            New PropertyMetadata(New Matrix4x4,
                                                 Sub(sender, e)
-                                                    Dim editor = DirectCast(sender, Matrix4x4Editor).TblMatrix
+                                                    Dim editor = DirectCast(sender, Matrix4x4Editor)
+                                                    Dim valuePreview = editor.TblMatrix
                                                     Dim mat = DirectCast(e.NewValue, Matrix4x4)
-                                                    editor.Text = $"[{mat.M11},{mat.M12},{mat.M13},{mat.M14};{mat.M21},{mat.M22},{mat.M23},{mat.M24};{mat.M31},{mat.M32},{mat.M33},{mat.M34};{mat.M41},{mat.M42},{mat.M43},{mat.M44}]"
+                                                    valuePreview.Text = $"[{mat.M11},{mat.M12},{mat.M13},{mat.M14};{mat.M21},{mat.M22},{mat.M23},{mat.M24};{mat.M31},{mat.M32},{mat.M33},{mat.M34};{mat.M41},{mat.M42},{mat.M43},{mat.M44}]"
+                                                    editor.ReloadValue()
                                                 End Sub))
 
     Dim _isCanceling As Boolean
@@ -43,6 +45,10 @@ Public NotInheritable Class Matrix4x4Editor
     End Sub
 
     Private Sub Flyout_Opening(sender As Object, e As Object)
+        ReloadValue()
+    End Sub
+
+    Private Sub ReloadValue()
         TblError.Text = ""
         TxtM11.Text = Value.M11
         TxtM12.Text = Value.M12

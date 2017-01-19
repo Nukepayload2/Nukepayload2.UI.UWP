@@ -17,9 +17,11 @@ Public NotInheritable Class Matrix3x2Editor
                            GetType(Matrix3x2), GetType(Matrix3x2Editor),
                            New PropertyMetadata(New Matrix3x2,
                                                 Sub(sender, e)
-                                                    Dim editor = DirectCast(sender, Matrix3x2Editor).TblMatrix
+                                                    Dim editor = DirectCast(sender, Matrix3x2Editor)
+                                                    Dim valuePreview = editor.TblMatrix
                                                     Dim mat = DirectCast(e.NewValue, Matrix3x2)
-                                                    editor.Text = $"[{mat.M11},{mat.M12};{mat.M21},{mat.M22};{mat.M31},{mat.M32}]"
+                                                    valuePreview.Text = $"[{mat.M11},{mat.M12};{mat.M21},{mat.M22};{mat.M31},{mat.M32}]"
+                                                    editor.ReloadValue()
                                                 End Sub))
 
     Dim _isCanceling As Boolean
@@ -42,6 +44,10 @@ Public NotInheritable Class Matrix3x2Editor
     End Sub
 
     Private Sub Flyout_Opening(sender As Object, e As Object)
+        ReloadValue()
+    End Sub
+
+    Private Sub ReloadValue()
         TblError.Text = ""
         TxtM11.Text = Value.M11
         TxtM12.Text = Value.M12
