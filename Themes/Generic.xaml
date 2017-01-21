@@ -720,7 +720,7 @@
 
     <!--可选择的数据模板-->
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="DynamicDataTemplates.xaml"/>
+        <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/DynamicDataTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

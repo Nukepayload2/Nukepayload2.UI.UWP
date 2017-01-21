@@ -8,6 +8,13 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/DynamicDataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="38"/>
@@ -22,9 +29,11 @@
             <Image Margin="2"/>
             <TextBlock Margin="4" VerticalAlignment="Center" Grid.Column="1"/>
         </Grid>
-        <ComboBox Grid.Row="1" HorizontalAlignment="Stretch"/>
+        <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" SelectedIndex="0">
+            <ComboBoxItem>按字母顺序排列</ComboBoxItem>
+        </ComboBox>
         <ScrollViewer Grid.Row="2">
-            <ContentControl />
+            <ContentControl ContentTemplate="{StaticResource PropertySetListDataTemplate}"/>
         </ScrollViewer>
     </Grid>
 </UserControl>

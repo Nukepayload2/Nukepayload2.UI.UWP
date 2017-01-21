@@ -125,6 +125,7 @@
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\DateTimeToOffsetConverter.vb" />
     <Compile Include="Converters\FontStretchBackToStringConverter.vb" />
     <Compile Include="Converters\EnumValuesConverter.vb" />
     <Compile Include="Converters\FontStyleBackToStringConverter.vb" />
@@ -152,6 +153,9 @@
     <Compile Include="Utilities\NonClientAeraHandler.vb" />
     <Compile Include="Utilities\ResizeDirection.vb" />
     <Compile Include="Utilities\SimpleCommand.vb" />
+    <Compile Include="Views\Controls\ColorEditor.xaml.vb">
+      <DependentUpon>ColorEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\ErrorBlock.xaml.vb">
       <DependentUpon>ErrorBlock.xaml</DependentUpon>
     </Compile>
@@ -175,6 +179,15 @@
       <DependentUpon>TypeValidatorTextBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\ValueEditorTemplateSelector.vb" />
+    <Compile Include="Views\Controls\Vector2Editor.xaml.vb">
+      <DependentUpon>Vector2Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Vector3Editor.xaml.vb">
+      <DependentUpon>Vector3Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Vector4Editor.xaml.vb">
+      <DependentUpon>Vector4Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ClassicDialog.vb" />
     <Compile Include="Views\Dialogs\FontDialog.xaml.vb">
       <DependentUpon>FontDialog.xaml</DependentUpon>
@@ -233,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Controls\ColorEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Controls\ErrorBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -252,6 +269,18 @@
     <Page Include="Views\Controls\TypeValidatorTextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Vector2Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Vector3Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Vector4Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\FontDialog.xaml">
       <SubType>Designer</SubType>

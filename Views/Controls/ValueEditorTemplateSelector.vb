@@ -6,21 +6,21 @@ Public Class ValueEditorTemplateSelector
     Inherits DataTemplateSelector
 
     Shared ResourceDic As New ResourceDictionary With {
-        .Source = New Uri("Themes/DynamicDataTemplates.xaml")
+        .Source = New Uri("ms-appx:///Nukepayload2.UI.UWP/Themes/DynamicDataTemplates.xaml")
     }
 
     Shared TypeTable As New Dictionary(Of Type, DataTemplate) From {
-        {GetType(Long), GetIntegerDataTemplate()},
-        {GetType(ULong), GetIntegerDataTemplate()},
-        {GetType(Integer), GetIntegerDataTemplate()},
-        {GetType(UInteger), GetIntegerDataTemplate()},
-        {GetType(Short), GetIntegerDataTemplate()},
-        {GetType(UShort), GetIntegerDataTemplate()},
-        {GetType(SByte), GetIntegerDataTemplate()},
-        {GetType(Byte), GetIntegerDataTemplate()},
-        {GetType(Single), GetDecimalDataTemplate()}，
-        {GetType(Double), GetDecimalDataTemplate()}，
-        {GetType(Decimal), GetDecimalDataTemplate()},
+        {GetType(Long), ResourceDic!Int64EditorDataTemplate},
+        {GetType(ULong), ResourceDic!UInt64EditorDataTemplate},
+        {GetType(Integer), ResourceDic!Int32EditorDataTemplate},
+        {GetType(UInteger), ResourceDic!UInt32EditorDataTemplate},
+        {GetType(Short), ResourceDic!Int16EditorDataTemplate},
+        {GetType(UShort), ResourceDic!UInt16EditorDataTemplate},
+        {GetType(SByte), ResourceDic!SByteEditorDataTemplate},
+        {GetType(Byte), ResourceDic!ByteEditorDataTemplate},
+        {GetType(Single), ResourceDic!SingleEditorDataTemplate}，
+        {GetType(Double), ResourceDic!DoubleEditorDataTemplate}，
+        {GetType(Decimal), ResourceDic!DecimalEditorDataTemplate},
         {GetType(TimeSpan), ResourceDic!TimeSpanEditorDataTemplate},
         {GetType(Date), ResourceDic!DateTimeEditorDataTemplate},
         {GetType(DateTimeOffset), ResourceDic!DateTimeOffsetEditorDataTemplate},
@@ -69,15 +69,12 @@ Public Class ValueEditorTemplateSelector
         TypeTable.Add(key, value)
     End Sub
 
-    Private Shared Function GetDecimalDataTemplate() As DataTemplate
-        Return ResourceDic!DecimalEditorDataTemplate
-    End Function
-
-    Private Shared Function GetIntegerDataTemplate() As DataTemplate
-        Return ResourceDic!IntegerEditorDataTemplate
-    End Function
-
-    Private Function TryGetDefinedTemplate(itemType As Type) As DataTemplate
+    ''' <summary>
+    ''' 尝试获取指定类型的数据模板。找不到则返回空。
+    ''' </summary>
+    ''' <param name="itemType">要检索的类型</param>
+    ''' <returns>指定类型的数据模板。找不到则返回空。</returns>
+    Public Function TryGetDefinedTemplate(itemType As Type) As DataTemplate
         Dim typeInf = itemType.GetTypeInfo
         If TypeTable.ContainsKey(itemType) Then
             Return TypeTable(itemType)

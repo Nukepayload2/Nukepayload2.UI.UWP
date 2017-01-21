@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="Nukepayload2.UI.UWP.Vector2Editor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.UI.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" Padding="4" Name="TblMatrix" HorizontalAlignment="Center" FontSize="20">&lt;0,0&gt;</TextBlock>
+        <Button Grid.Column="1" Padding="8">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE104;" />
+            <Button.Flyout>
+                <Flyout Placement="Left" Closing="Flyout_Closing" Opening="Flyout_Opening">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="40">&lt;</TextBlock>
+                        <Grid x:Name="GrdNumbers" Grid.Column="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="24"/>
+                                    <Setter Property="Margin" Value="4"/>
+                                </Style>
+                            </Grid.Resources>
+                            <TextBox Text="0" x:Name="TxtX"></TextBox>
+                            <TextBox Text="0" x:Name="TxtY" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <TextBlock FontSize="40" Grid.Column="2">&gt;</TextBlock>
+                        <TextBlock x:Name="TblError" Grid.Row="1" Grid.ColumnSpan="3" Foreground="Red"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">
+                            <TextBlock VerticalAlignment="Center">设为：</TextBlock>
+                            <Button Content="零向量" Click="BtnSetZero_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
+    </Grid>
+</UserControl>
