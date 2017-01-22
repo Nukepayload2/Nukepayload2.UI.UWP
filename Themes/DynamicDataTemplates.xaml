@@ -4,6 +4,7 @@
     xmlns:sys="using:System"
     xmlns:local="using:Nukepayload2.UI.UWP">
 
+    <local:ObjectExtendToPropertyDefinitionsConverter x:Key="ObjectExtendToPropertyDefinitionsConverter"/>
     <local:ValueEditorTemplateSelector x:Key="ValueEditorTemplateSelector"/>
     <local:DateTimeToOffsetConverter x:Key="DateConv"/>
     <!--用于编辑值的模板-->
@@ -111,7 +112,7 @@
     </DataTemplate>
     <DataTemplate x:Key="NullableValueEditorDataTemplate">
         <!-- TODO: 需要用户控件-->
-        
+
     </DataTemplate>
 
     <!-- PropertySet 条目 -->
@@ -122,13 +123,13 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding Name}"/>
-            <ContentControl ContentTemplateSelector="{StaticResource ValueEditorTemplateSelector}"/>
+            <ContentControl ContentTemplateSelector="{StaticResource ValueEditorTemplateSelector}" Content="{Binding Value,Mode=TwoWay}"/>
         </Grid>
     </DataTemplate>
- 
+
     <!-- PropertySet 编辑方式 -->
     <DataTemplate x:Key="PropertySetListDataTemplate">
-        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}"/>
+        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}" ItemsSource="{Binding Converter={StaticResource ObjectExtendToPropertyDefinitionsConverter}}"/>
     </DataTemplate>
 
     <DataTemplate x:Key="PropertySemanticZoomDataTemplate">

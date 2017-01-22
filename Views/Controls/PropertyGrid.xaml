@@ -33,7 +33,7 @@
             <ComboBoxItem>按字母顺序排列</ComboBoxItem>
         </ComboBox>
         <ScrollViewer Grid.Row="2">
-            <ContentControl ContentTemplate="{StaticResource PropertySetListDataTemplate}"/>
+            <ContentControl x:Name="CtlPropertiesView" ContentTemplate="{StaticResource PropertySetListDataTemplate}"/>
         </ScrollViewer>
     </Grid>
 </UserControl>

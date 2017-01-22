@@ -130,13 +130,15 @@
     <Compile Include="Converters\EnumValuesConverter.vb" />
     <Compile Include="Converters\FontStyleBackToStringConverter.vb" />
     <Compile Include="Converters\FontWeightNameConverter.vb" />
+    <Compile Include="Converters\ObjectExtendToPropertyDefinitionsConverter.vb" />
     <Compile Include="Linq\ElementsQuery.vb" />
     <Compile Include="Linq\ISequenceExecution.vb" />
     <Compile Include="Linq\SequenceExecution.vb" />
     <Compile Include="Models\FontInformation.vb" />
-    <Compile Include="Models\IPropertyItem.vb" />
     <Compile Include="Models\NamedProperty.vb" />
+    <Compile Include="Models\PropertyDefinition.vb" />
     <Compile Include="Utilities\FontDefaults.vb" />
+    <Compile Include="Utilities\ObjectDeconstructor.vb" />
     <Compile Include="Utilities\ThumbnailGenerator.vb" />
     <Compile Include="Utilities\StringValidator.vb" />
     <Compile Include="Utilities\TypeValidations.vb" />
