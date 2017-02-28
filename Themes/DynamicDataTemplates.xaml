@@ -10,7 +10,7 @@
     <!--用于编辑值的模板-->
     <DataTemplate x:Key="SByteEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Byte}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=SByte}"/>
             <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>

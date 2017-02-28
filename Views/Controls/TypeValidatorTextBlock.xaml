@@ -10,6 +10,6 @@
     d:DesignWidth="400">
 
     <Grid>
-        <TextBlock x:Name="TxtErrorMessage"/>
+        <TextBlock Foreground="Red" x:Name="TxtErrorMessage"/>
     </Grid>
 </UserControl>
