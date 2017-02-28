@@ -2,6 +2,9 @@
 Imports System.Reflection
 Imports Windows.UI
 
+''' <summary>
+''' 选择用于编辑某一项属性值所需的数据模板
+''' </summary>
 Public Class ValueEditorTemplateSelector
     Inherits DataTemplateSelector
 
@@ -86,7 +89,7 @@ Public Class ValueEditorTemplateSelector
         Return Nothing
     End Function
 
-    Protected Overrides Function SelectTemplateCore(item As Object) As DataTemplate
-        Return If(TryGetDefinedTemplate(item.GetType), MyBase.SelectTemplateCore(item))
+    Protected Overrides Function SelectTemplateCore(item As Object, container As DependencyObject) As DataTemplate
+        Return If(TryGetDefinedTemplate(item.GetType), MyBase.SelectTemplateCore(item, container))
     End Function
 End Class

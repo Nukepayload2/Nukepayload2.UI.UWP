@@ -131,9 +131,11 @@
     <Compile Include="Converters\FontStyleBackToStringConverter.vb" />
     <Compile Include="Converters\FontWeightNameConverter.vb" />
     <Compile Include="Converters\ObjectExtendToPropertyDefinitionsConverter.vb" />
+    <Compile Include="Converters\StringToSystemTypeConverter.vb" />
     <Compile Include="Linq\ElementsQuery.vb" />
     <Compile Include="Linq\ISequenceExecution.vb" />
     <Compile Include="Linq\SequenceExecution.vb" />
+    <Compile Include="Models\BasicTypes.vb" />
     <Compile Include="Models\FontInformation.vb" />
     <Compile Include="Models\NamedProperty.vb" />
     <Compile Include="Models\PropertyDefinition.vb" />
@@ -180,7 +182,7 @@
     <Compile Include="Views\Controls\TypeValidatorTextBlock.xaml.vb">
       <DependentUpon>TypeValidatorTextBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\ValueEditorTemplateSelector.vb" />
+    <Compile Include="Views\TemplateSelectors\ValueEditorTemplateSelector.vb" />
     <Compile Include="Views\Controls\Vector2Editor.xaml.vb">
       <DependentUpon>Vector2Editor.xaml</DependentUpon>
     </Compile>

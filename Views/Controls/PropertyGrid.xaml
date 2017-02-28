@@ -26,8 +26,8 @@
                 <ColumnDefinition Width="38"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Margin="2"/>
-            <TextBlock Margin="4" VerticalAlignment="Center" Grid.Column="1"/>
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA86;" />
+            <TextBlock x:Name="TblTypeName" Margin="4" VerticalAlignment="Center" Grid.Column="1"/>
         </Grid>
         <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" SelectedIndex="0">
             <ComboBoxItem>按字母顺序排列</ComboBoxItem>

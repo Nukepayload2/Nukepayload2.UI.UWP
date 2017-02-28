@@ -2,9 +2,22 @@
 Imports System.Reflection
 
 ''' <summary>
-''' 表示属性的定义
+''' 表示属性的定义。这个类型不能序列化。
 ''' </summary>
 Public Class PropertyDefinition
+
+    Sub New(owner As Object, propertyInfo As PropertyInfo)
+        Me.Owner = owner
+        Me.PropertyInfo = propertyInfo
+    End Sub
+    ''' <summary>
+    ''' 获取显示名称
+    ''' </summary>
+    Public ReadOnly Property DisplayName As String
+        Get
+            Return If(String.IsNullOrEmpty([Alias]), Name, [Alias])
+        End Get
+    End Property
     ''' <summary>
     ''' 获取这个属性的原名
     ''' </summary>
@@ -25,26 +38,37 @@ Public Class PropertyDefinition
         End Set
     End Property
     ''' <summary>
-    ''' 这个属性是不是只读的？
+    ''' 这个属性是不是可读写的
     ''' </summary>
-    Public ReadOnly Property IsReadOnly As Boolean
+    Public ReadOnly Property IsReadWrite As Boolean
         Get
-            Return PropertyInfo.CanRead AndAlso Not PropertyInfo.CanWrite
+            Return PropertyInfo.CanRead AndAlso PropertyInfo.CanWrite
         End Get
     End Property
-
     ''' <summary>
     ''' 属性使用 <see cref="DisplayAttribute.Description"/> 标记的描述。
     ''' </summary>
-    Public Property Description As String
+    Public ReadOnly Property Description As String
+        Get
+            Return PropertyInfo.GetCustomAttribute(Of DisplayAttribute)?.Description
+        End Get
+    End Property
     ''' <summary>
     ''' 属性使用 <see cref="DisplayAttribute.GroupName"/> 标记的组名。使用 SemanticZoom 模式显示组名时将使用这个属性。
     ''' </summary>
-    Public Property GroupName As String
+    Public ReadOnly Property GroupName As String
+        Get
+            Return PropertyInfo.GetCustomAttribute(Of DisplayAttribute)?.GroupName
+        End Get
+    End Property
     ''' <summary>
     ''' 属性使用 <see cref="DisplayAttribute.Name"/> 标记的别名。可以在显示时将属性翻译成其它语言。
     ''' </summary>
-    Public Property [Alias] As String
+    Public ReadOnly Property [Alias] As String
+        Get
+            Return PropertyInfo.GetCustomAttribute(Of DisplayAttribute)?.Name
+        End Get
+    End Property
     ''' <summary>
     ''' 拥有这个属性的对象
     ''' </summary>

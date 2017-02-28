@@ -20,7 +20,7 @@ Public NotInheritable Class Vector3Editor
                                                     Dim editor = DirectCast(sender, Vector3Editor)
                                                     Dim valuePreview = editor.TblMatrix
                                                     Dim vec = DirectCast(e.NewValue, Vector3)
-                                                    valuePreview.Text = $"<{vec.X},{vec.Y},{vec.Z}>"
+                                                    valuePreview.Text = vec.ToString
                                                     editor.ReloadValue()
                                                 End Sub))
 

@@ -21,7 +21,7 @@ Public NotInheritable Class Vector4Editor
                                                     Dim editor = DirectCast(sender, Vector4Editor)
                                                     Dim valuePreview = editor.TblMatrix
                                                     Dim vec = DirectCast(e.NewValue, Vector4)
-                                                    valuePreview.Text = $"<{vec.X},{vec.Y},{vec.Z},{vec.W}>"
+                                                    valuePreview.Text = vec.ToString
                                                     editor.ReloadValue()
                                                 End Sub))
 

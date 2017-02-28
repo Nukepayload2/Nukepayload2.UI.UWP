@@ -1,77 +1,77 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:sys="using:System"
     xmlns:local="using:Nukepayload2.UI.UWP">
 
+    <local:BasicTypes x:Key="BasicTypes"/>
     <local:ObjectExtendToPropertyDefinitionsConverter x:Key="ObjectExtendToPropertyDefinitionsConverter"/>
     <local:ValueEditorTemplateSelector x:Key="ValueEditorTemplateSelector"/>
     <local:DateTimeToOffsetConverter x:Key="DateConv"/>
     <!--用于编辑值的模板-->
     <DataTemplate x:Key="SByteEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:SByte"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Byte}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="Int16EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Int16"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Int16}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="Int32EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Int32"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Int32}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="Int64EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Int64"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Int64}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="ByteEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Byte"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Byte}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="UInt16EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:UInt16"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=UInt16}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="UInt32EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:UInt32"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=UInt32}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="UInt64EditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:UInt64"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=UInt64}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="SingleEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Single"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Single}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="DoubleEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Double"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Double}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="DecimalEditorDataTemplate">
         <StackPanel>
-            <local:TypeValidatorTextBlock Value="{Binding}" ParseToType="sys:Decimal"/>
-            <TextBox Text="{Binding Mode=TwoWay}"/>
+            <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=Decimal}"/>
+            <TextBox x:Name="txtValue" Text="{Binding Mode=TwoWay}"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="DateTimeEditorDataTemplate">
@@ -96,7 +96,7 @@
         <local:Vector4Editor Value="{Binding Mode=TwoWay}"/>
     </DataTemplate>
     <DataTemplate x:Key="ColorEditorDataTemplate">
-        <local:ColorEditor Color="{Binding Mode=TwoWay}"/>
+        <local:ColorEditor MinWidth="100" Color="{Binding Mode=TwoWay}"/>
     </DataTemplate>
     <DataTemplate x:Key="Matrix3x2EditorDataTemplate">
         <local:Matrix3x2Editor Value="{Binding Mode=TwoWay}"/>
@@ -105,7 +105,7 @@
         <local:Matrix4x4Editor Value="{Binding Mode=TwoWay}"/>
     </DataTemplate>
     <DataTemplate x:Key="TimeSpanEditorDataTemplate">
-        <TimePicker Time="{Binding Mode=TwoWay}"/>
+        <TimePicker Time="{Binding Mode=TwoWay}" HorizontalAlignment="Right"/>
     </DataTemplate>
     <DataTemplate x:Key="BooleanEditorDataTemplate">
         <CheckBox IsChecked="{Binding Mode=TwoWay}"/>
@@ -117,19 +117,25 @@
 
     <!-- PropertySet 条目 -->
     <DataTemplate x:Key="PropertySetItemDataTemplate">
-        <Grid>
+        <Grid Margin="0,2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Name}"/>
-            <ContentControl ContentTemplateSelector="{StaticResource ValueEditorTemplateSelector}" Content="{Binding Value,Mode=TwoWay}"/>
+            <TextBlock Text="{Binding DisplayName}" Margin="0,0,4,0"/>
+            <ContentControl HorizontalContentAlignment="Stretch" Grid.Column="1" IsEnabled="{Binding IsReadWrite}" ContentTemplateSelector="{StaticResource ValueEditorTemplateSelector}" Content="{Binding Value,Mode=TwoWay}"/>
         </Grid>
     </DataTemplate>
 
     <!-- PropertySet 编辑方式 -->
     <DataTemplate x:Key="PropertySetListDataTemplate">
-        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}" ItemsSource="{Binding Converter={StaticResource ObjectExtendToPropertyDefinitionsConverter}}"/>
+        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}" ItemsSource="{Binding Converter={StaticResource ObjectExtendToPropertyDefinitionsConverter}}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel></ItemsStackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </DataTemplate>
 
     <DataTemplate x:Key="PropertySemanticZoomDataTemplate">

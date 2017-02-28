@@ -18,6 +18,7 @@ Public NotInheritable Class PropertyGrid
                                                 Sub(s, e)
                                                     Dim this = DirectCast(s, PropertyGrid)
                                                     this.CtlPropertiesView.Content = e.NewValue
+                                                    this.TblTypeName.Text = e.NewValue.GetType.Name
                                                 End Sub))
 
 End Class

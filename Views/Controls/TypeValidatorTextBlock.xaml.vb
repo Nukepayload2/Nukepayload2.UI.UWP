@@ -48,6 +48,11 @@ Public NotInheritable Class TypeValidatorTextBlock
         End If
 #End If
         ErrorMessage = If(TypeValidations.IsConvertable(value, tp), String.Empty, $"无法将类型 '{tp.Name}' 转换为 'System.String'。")
+        Visibility = If(String.IsNullOrEmpty(ErrorMessage), Visibility.Collapsed, Visibility.Visible)
+    End Sub
+
+    Private Sub TypeValidatorTextBlock_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Visibility = Visibility.Collapsed
     End Sub
 
     Public Property ErrorMessage As String
