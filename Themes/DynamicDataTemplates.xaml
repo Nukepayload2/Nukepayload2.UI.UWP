@@ -129,7 +129,7 @@
 
     <!-- PropertySet 编辑方式 -->
     <DataTemplate x:Key="PropertySetListDataTemplate">
-        <ItemsControl ItemTemplate="{StaticResource PropertySetItemDataTemplate}" ItemsSource="{Binding Converter={StaticResource ObjectExtendToPropertyDefinitionsConverter}}">
+        <ItemsControl HorizontalAlignment="Stretch" ItemTemplate="{StaticResource PropertySetItemDataTemplate}" ItemsSource="{Binding Converter={StaticResource ObjectExtendToPropertyDefinitionsConverter}}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsStackPanel></ItemsStackPanel>

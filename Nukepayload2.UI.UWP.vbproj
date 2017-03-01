@@ -136,6 +136,8 @@
     <Compile Include="Linq\ISequenceExecution.vb" />
     <Compile Include="Linq\SequenceExecution.vb" />
     <Compile Include="Models\BasicTypes.vb" />
+    <Compile Include="Models\ConstructorSelection.vb" />
+    <Compile Include="Models\EventBinding.vb" />
     <Compile Include="Models\FontInformation.vb" />
     <Compile Include="Models\NamedProperty.vb" />
     <Compile Include="Models\PropertyDefinition.vb" />
@@ -249,6 +251,11 @@
     <Page Include="Themes\DynamicDataTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\PivotStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Controls\ColorEditor.xaml">
       <SubType>Designer</SubType>

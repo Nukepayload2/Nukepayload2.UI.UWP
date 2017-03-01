@@ -12,28 +12,50 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/DynamicDataTemplates.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/PivotStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="38"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="38"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA86;" />
-            <TextBlock x:Name="TblTypeName" Margin="4" VerticalAlignment="Center" Grid.Column="1"/>
-        </Grid>
-        <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" SelectedIndex="0">
-            <ComboBoxItem>按字母顺序排列</ComboBoxItem>
-        </ComboBox>
-        <ScrollViewer Grid.Row="2">
-            <ContentControl Margin="0,0,12,0" x:Name="CtlPropertiesView" ContentTemplate="{StaticResource PropertySetListDataTemplate}"/>
-        </ScrollViewer>
-    </Grid>
+    <Pivot Grid.Row="1" Style="{StaticResource PivotHeaderAlignRightStyle}">
+        <Pivot.Title>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="38"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA86;" />
+                <TextBlock x:Name="TblTypeName" Margin="4" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid>
+        </Pivot.Title>
+        <PivotItem>
+            <PivotItem.Header>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
+            </PivotItem.Header>
+        </PivotItem>
+        <PivotItem>
+            <PivotItem.Header>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15E;" />
+            </PivotItem.Header>
+            <Grid Margin="-8,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ComboBox HorizontalAlignment="Stretch" SelectedIndex="0">
+                    <ComboBoxItem>按字母顺序排列</ComboBoxItem>
+                    <ComboBoxItem>(未实施) Semantic Zoom</ComboBoxItem>
+                </ComboBox>
+                <ScrollViewer Grid.Row="1" x:Name="ScrObjectView" HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+                    <ContentControl Margin="0,0,14,0" x:Name="CtlPropertiesView" HorizontalContentAlignment="Stretch" ContentTemplate="{StaticResource PropertySetListDataTemplate}"/>
+                </ScrollViewer>
+            </Grid>
+        </PivotItem>
+        <PivotItem>
+            <PivotItem.Header>
+                <ContentControl x:Name="lightingIcon">
+                    <Path Stroke="{Binding ElementName=lightingIcon,Path=Foreground,UpdateSourceTrigger=PropertyChanged}" Data="F1 M 7.294,9.275 C 9.046,5.563 10.921,1.000 10.921,1.000 L 6.921,1.000 L 1.921,12.500 C 1.921,12.500 1.789,12.750 1.658,13.000 C 1.789,13.000 1.921,13.000 1.921,13.000 C 1.921,13.000 5.857,13.000 6.745,13.000 C 6.102,14.822 4.921,20.000 4.921,20.000 L 13.921,10.000 L 6.921,10.000 C 6.921,10.000 7.077,9.734 7.294,9.275 Z"/>
+                </ContentControl>
+            </PivotItem.Header>
+        </PivotItem>
+    </Pivot>
 </UserControl>
