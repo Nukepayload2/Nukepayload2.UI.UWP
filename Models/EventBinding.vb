@@ -5,7 +5,7 @@
 Public Class EventBinding
     Implements INotifyPropertyChanged
 
-    Dim _Method As MethodInfo
+    Dim _MethodName As String
 
     Sub New([event] As EventInfo)
         Me.Event = [event]
@@ -13,13 +13,13 @@ Public Class EventBinding
     ''' <summary>
     ''' 绑定到事件的方法
     ''' </summary>
-    Public Property Method As MethodInfo
+    Public Property MethodName As String
         Get
-            Return _Method
+            Return _MethodName
         End Get
-        Set(value As MethodInfo)
-            _Method = value
-            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Method)))
+        Set(value As String)
+            _MethodName = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(MethodName)))
         End Set
     End Property
     ''' <summary>

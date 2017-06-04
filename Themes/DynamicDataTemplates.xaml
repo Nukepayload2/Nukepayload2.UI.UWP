@@ -7,7 +7,12 @@
     <local:ObjectExtendToPropertyDefinitionsConverter x:Key="ObjectExtendToPropertyDefinitionsConverter"/>
     <local:ValueEditorTemplateSelector x:Key="ValueEditorTemplateSelector"/>
     <local:DateTimeToOffsetConverter x:Key="DateConv"/>
+    <local:EnumValuesConverter x:Key="EnumValuesConverter"/>
+    <local:EnumBackToValueConverter x:Key="EnumBackToValueConverter"/>
     <!--用于编辑值的模板-->
+    <DataTemplate x:Key="DummyEditorDataTemplate">
+        
+    </DataTemplate>
     <DataTemplate x:Key="SByteEditorDataTemplate">
         <StackPanel>
             <local:TypeValidatorTextBlock Value="{Binding ElementName=txtValue,Path=Text}" ParseToType="{Binding Source={StaticResource BasicTypes},Path=SByte}"/>
@@ -114,7 +119,29 @@
         <!-- TODO: 需要用户控件-->
 
     </DataTemplate>
-
+    <DataTemplate x:Key="EnumEditorTemplate">
+        <ComboBox x:Name="LstFontStyle" HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding Converter={StaticResource EnumValuesConverter}}"
+                  SelectedValue="{Binding Converter={StaticResource EnumBackToStringConverter}, Mode=TwoWay}"/>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="EnumerableEditorTemplate">
+        <ItemsControl HorizontalAlignment="Stretch" ItemsSource="{Binding}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel></ItemsStackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl ContentTemplateSelector="{StaticResource ValueEditorTemplateSelector}" 
+                                    Content="{Binding}" HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Stretch"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+    
     <!-- PropertySet 条目 -->
     <DataTemplate x:Key="PropertySetItemDataTemplate">
         <Grid Margin="0,2">

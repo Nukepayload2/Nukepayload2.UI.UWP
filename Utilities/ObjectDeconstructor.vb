@@ -8,7 +8,9 @@ Public Class ObjectDeconstructor
     ''' <returns></returns>
     Public Shared Function GetPropertyDefinitions(obj As Object) As IEnumerable(Of PropertyDefinition)
         Return From prop In obj.GetType.GetRuntimeProperties
-               Where If(prop.GetMethod?.IsPublic, False)
+               Let getMethod = prop.GetMethod
+               Where getMethod IsNot Nothing
+               Where getMethod.IsPublic AndAlso Not getMethod.IsStatic
                Select New PropertyDefinition(obj, prop)
     End Function
 End Class

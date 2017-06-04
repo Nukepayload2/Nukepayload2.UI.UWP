@@ -81,15 +81,20 @@ Public Class ValueEditorTemplateSelector
         Dim typeInf = itemType.GetTypeInfo
         If TypeTable.ContainsKey(itemType) Then
             Return TypeTable(itemType)
-        ElseIf GetType(IEnumerable(Of)).GetTypeInfo.IsAssignableFrom(typeInf) Then
-            Return ResourceDic!PropertySetListDataTemplate
-        ElseIf Nullable.GetUnderlyingType(itemType) IsNot Nothing Then
+        ElseIf typeInf.ImplementedInterfaces.Contains(GetType(IEnumerable)) Then
+            Return ResourceDic!EnumerableEditorTemplate
+        ElseIf typeInf.IsEnum Then
+            Return ResourceDic!EnumEditorTemplate
+        ElseIf Nullable.GetUnderlyingType(itemType) IsNot Nothing Then '大多数情况下无效
             Return ResourceDic!NullableValueEditorDataTemplate
         End If
         Return Nothing
     End Function
 
     Protected Overrides Function SelectTemplateCore(item As Object, container As DependencyObject) As DataTemplate
+        If item Is Nothing OrElse TypeOf item Is String AndAlso String.IsNullOrEmpty(TryCast(item, String)) Then
+            Return ResourceDic!DummyEditorDataTemplate
+        End If
         Return If(TryGetDefinedTemplate(item.GetType), MyBase.SelectTemplateCore(item, container))
     End Function
 End Class

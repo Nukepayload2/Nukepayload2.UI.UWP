@@ -24,7 +24,6 @@ Public NotInheritable Class PropertyGrid
                                                     Dim newType = newValue.GetType
                                                     this.TblTypeName.Text = newType.Name
                                                     this.Constructors = newType.GetConstructors
-                                                    this.ConstructorSelectedIndex = -1
                                                     this.EventList = Aggregate evt In newType.GetEvents
                                                                      Select New EventBinding(evt) Into ToArray
                                                 End Sub))
@@ -40,13 +39,18 @@ Public NotInheritable Class PropertyGrid
     Public Shared ReadOnly ConstructorsProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(Constructors),
                            GetType(ConstructorInfo()), GetType(PropertyGrid),
-                           New PropertyMetadata(Nothing))
+                           New PropertyMetadata(Nothing,
+                                                Sub(s, e)
+                                                    Dim this = DirectCast(s, PropertyGrid)
+                                                    this.LstCtors.ItemsSource = e.NewValue
+                                                    this.ConstructorSelectedIndex = -1
+                                                End Sub))
 
     Public Property ConstructorSelectedIndex As Integer
         Get
             Return GetValue(ConstructorSelectedIndexProperty)
         End Get
-        Friend Set
+        Set
             SetValue(ConstructorSelectedIndexProperty, Value)
         End Set
     End Property
@@ -61,6 +65,8 @@ Public NotInheritable Class PropertyGrid
                                                         this.CurrentConstructorSelection = New ConstructorSelection With {
                                                             .SelectedConstructor = this.Constructors(newValue)
                                                         }
+                                                    Else
+                                                        this.CurrentConstructorSelection = New ConstructorSelection
                                                     End If
                                                 End Sub))
 
@@ -75,7 +81,11 @@ Public NotInheritable Class PropertyGrid
     Public Shared ReadOnly CurrentConstructorSelectionProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(CurrentConstructorSelection),
                            GetType(ConstructorSelection), GetType(PropertyGrid),
-                           New PropertyMetadata(New ConstructorSelection))
+                           New PropertyMetadata(New ConstructorSelection,
+                                                Sub(s, e)
+                                                    Dim this = DirectCast(s, PropertyGrid)
+                                                    this.LstParams.ItemsSource = TryCast(e.NewValue, ConstructorSelection)?.ParameterInfoes
+                                                End Sub))
 
     Public Property EventList As EventBinding()
         Get
@@ -88,6 +98,13 @@ Public NotInheritable Class PropertyGrid
     Public Shared ReadOnly EventListProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(EventList),
                            GetType(EventBinding()), GetType(PropertyGrid),
-                           New PropertyMetadata(Nothing))
+                           New PropertyMetadata(Nothing,
+                                                Sub(s, e)
+                                                    Dim this = DirectCast(s, PropertyGrid)
+                                                    this.LstEvents.ItemsSource = e.NewValue
+                                                End Sub))
 
+    Private Sub LstCtors_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles LstCtors.SelectionChanged
+        ConstructorSelectedIndex = LstCtors.SelectedIndex
+    End Sub
 End Class

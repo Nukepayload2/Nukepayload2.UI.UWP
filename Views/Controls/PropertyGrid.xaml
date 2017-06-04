@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nukepayload2.UI.UWP"
+    xmlns:ctl="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -14,9 +15,10 @@
                 <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/DynamicDataTemplates.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Nukepayload2.UI.UWP/Themes/PivotStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <local:CtorDescriptionConverter x:Key="CtorDescriptionConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Pivot Grid.Row="1" Style="{StaticResource PivotHeaderAlignRightStyle}">
+    <Pivot SelectedIndex="1" Grid.Row="1" Style="{StaticResource PivotHeaderAlignRightStyle}">
         <Pivot.Title>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,12 +33,55 @@
             <PivotItem.Header>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
             </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,0,0,11">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="0,2">用哪个构造函数生成工厂类</TextBlock>
+                    <ListBox x:Name="LstCtors" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource CtorDescriptionConverter}}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <ctl:GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" 
+                                  Height="11" Background="Gray"
+                                  ResizeDirection="Auto"
+                                  ResizeBehavior="BasedOnAlignment"
+                                  CursorBehavior="ChangeOnSplitterHover"
+                                  GripperForeground="White"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="0,2">工厂类属性初始值设定项</TextBlock>
+                    <ListBox x:Name="LstParams" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=Item1.Name}"></TextBlock>
+                                    <TextBox PlaceholderText="请输入初始化参数的 VB 代码" Text="{Binding Item2,Mode=TwoWay}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15E;" />
             </PivotItem.Header>
-            <Grid Margin="-8,0">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
@@ -56,6 +101,22 @@
                     <Path Stroke="{Binding ElementName=lightingIcon,Path=Foreground,UpdateSourceTrigger=PropertyChanged}" Data="F1 M 7.294,9.275 C 9.046,5.563 10.921,1.000 10.921,1.000 L 6.921,1.000 L 1.921,12.500 C 1.921,12.500 1.789,12.750 1.658,13.000 C 1.789,13.000 1.921,13.000 1.921,13.000 C 1.921,13.000 5.857,13.000 6.745,13.000 C 6.102,14.822 4.921,20.000 4.921,20.000 L 13.921,10.000 L 6.921,10.000 C 6.921,10.000 7.077,9.734 7.294,9.275 Z"/>
                 </ContentControl>
             </PivotItem.Header>
+            <ScrollViewer>
+                <ItemsControl x:Name="LstEvents" Margin="0,0,14,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Path=Event.Name,Mode=OneWay}"></TextBlock>
+                                <TextBox Grid.Column="1" PlaceholderText="输入事件处理程序" Text="{Binding MethodName,Mode=TwoWay}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </PivotItem>
     </Pivot>
 </UserControl>
